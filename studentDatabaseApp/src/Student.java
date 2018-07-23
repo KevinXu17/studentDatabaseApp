@@ -12,10 +12,12 @@ public class Student {
     private String lastName;
     private int gradeYear;
     private String studentID;
-    private int tuitionBalance;
+
     private List<Course> courses;
 
     private static int id = 1001;
+
+    private StudentTuition balance;
 
     //constructor: prompt user to enter student's name and year
     public Student() {
@@ -37,6 +39,9 @@ public class Student {
 
         //new courses
         courses = new ArrayList<>();
+
+        //create tuition : 0
+        balance = new StudentTuition();
 
 
 
@@ -60,7 +65,7 @@ public class Student {
     }
 
     public int getTuitionBalance() {
-        return tuitionBalance;
+        return balance.getTuitionBalance();
     }
 
     public List<Course> getCourses() {
@@ -82,36 +87,38 @@ public class Student {
 
     //Enroll in courses
     public void enroll(Course course) {
-        if (!courses.containsAll(course.getPreCourse())) {
-            System.out.println("No enough pre-course");
-        } else {
+        if (course.getPreCourse() == null || courses.containsAll(course.getPreCourse())) {
             try {
                 payTuition(course);
+                courses.add(course);
             } catch (NoEnoughtMoneyException e) {
                 System.out.println("No enought balance.");
             }
+        } else if (!courses.containsAll(course.getPreCourse())) {
+            System.out.println("No enough pre-course");
         }
     }
 
     //View balance
     public void getBalance(){
-        System.out.println("The balance is: " + tuitionBalance);
+        System.out.println("The balance is: " + getTuitionBalance());
     }
 
     //Pay Tuition
     private void payTuition(Course course) throws NoEnoughtMoneyException {
-        if (this.tuitionBalance < course.getCost()) {
+        if (getTuitionBalance() < course.getCost()) {
             throw new NoEnoughtMoneyException("Your balance is not enought.");
         }
-        tuitionBalance -= course.getCost();
+        balance.payTuition(course.getCost());
     }
 
     //debit balance
-    public void debitBalance(int i) throws IncorrectMoneyException {
-        if (i <= 0) {
-            throw new IncorrectMoneyException("Please insert the correct number.");
+    public void debitBalance(int i)  {
+        try {
+            balance.debitMoney(i);
+        } catch (IncorrectMoneyException e) {
+            System.out.println("Please insert the correct number of money.");
         }
-        tuitionBalance += i;
     }
 
 
@@ -120,6 +127,8 @@ public class Student {
         System.out.println("The student's name: "+ firstName + " " + lastName);
         System.out.println("Class level: "+ gradeYear);
         System.out.println("Student ID: " + studentID);
+        System.out.println("Tuition balance: " + getTuitionBalance());
+
         System.out.println("The courses the student taked: ");
         List<Course> cs = getCourses();
         if (cs.size() == 0) {

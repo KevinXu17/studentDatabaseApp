@@ -7,11 +7,12 @@ public class Course {
     private List<Course> preCourse;
     private int credit;
 
-    public Course(String courseName, int cost, List<Course> preCourse, int credit) {
+    public Course(String courseName, int cost, List<Course> pc, int credit) {
         this.courseName = courseName;
         this.cost = cost;
-        this.preCourse = preCourse;
         this.credit = credit;
+
+        setPreCourse(pc);
     }
 
     // getter
@@ -25,6 +26,12 @@ public class Course {
 
     public List<Course> getPreCourse() {
         return preCourse;
+    }
+
+    public void printPreCourse(){
+        for (int i = 0; i < preCourse.size(); i++) {
+            System.out.println(preCourse.get(i).getCourseName());
+        }
     }
 
     public int getCredit() {
