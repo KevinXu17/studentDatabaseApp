@@ -1,17 +1,12 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class StudentDatabaseApp {
-    static HashMap students = new HashMap();
+    static StudentManager students = StudentManager.getInstance();
 
 
-    public  static void addStudents(int n) {
-        for (int i = 0; i < n; i++) {
-            Student s1 = new Student();
-            students.put(s1.getStudentID(),s1);
-        }
-    }
+
 
 
     public static void main(String[] args) {
@@ -26,26 +21,26 @@ public class StudentDatabaseApp {
 
 
 
-//        //ask how many students we want to add
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Enter the number of students need to add: ");
-//        int numOfStudent = input.nextInt();
+        //ask how many students we want to add
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the number of students need to add: ");
+        int numOfStudent = input.nextInt();
 
-        //create a number of new students
-//        addStudents(numOfStudent);
-
-        Student s = new Student();
-
-        s.checkInfo();
-
-
-        s.debitBalance(90000);
-        s.enroll(cs110);
-        s.enroll(cs121);
-
-
-        s.enroll(cs210);
-        s.checkInfo();
+        //create numbers of new students
+          students.addNStudents(numOfStudent);
+//
+//        Student s = new Student();
+//
+//        s.checkInfo();
+//
+//
+//        s.debitBalance(-1);
+//        s.enroll(cs110);
+//        s.enroll(cs121);
+//
+//
+//        s.enroll(cs210);
+//        s.checkInfo();
 
 
     }

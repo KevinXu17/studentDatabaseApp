@@ -44,8 +44,6 @@ public class Student {
         balance = new StudentTuition();
 
 
-
-
     }
 
     public String getFirstName() {
