@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class StudentDatabaseApp {
     static StudentManager students = StudentManager.getInstance();
-
+    static CourseManager courses = CourseManager.getInstance();
 
 
 
@@ -19,15 +18,18 @@ public class StudentDatabaseApp {
         preCourseOfcs210.add(cs121);
         Course cs210 = new Course("cs210", 600, preCourseOfcs210,4);
 
+        courses.addCourse(cs110);
+        courses.addCourse(cs121);
+        courses.addCourse(cs210);
 
 
         //ask how many students we want to add
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter the number of students need to add: ");
-        int numOfStudent = input.nextInt();
+//        Scanner input = new Scanner(System.in);
+//        System.out.println("Enter the number of students need to add: ");
+//        int numOfStudent = input.nextInt();
 
         //create numbers of new students
-          students.addNStudents(numOfStudent);
+ //         students.addNStudents(numOfStudent);
 //
 //        Student s = new Student();
 //
@@ -42,6 +44,8 @@ public class StudentDatabaseApp {
 //        s.enroll(cs210);
 //        s.checkInfo();
 
+
+        System.out.println(courses.getNumCourses());
 
     }
 
