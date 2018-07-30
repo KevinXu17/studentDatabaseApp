@@ -46,6 +46,9 @@ public class CourseManager {
     }
 
 
+    public Course findCourseByName(String name) {
+        
+    }
 
 
 
@@ -54,7 +57,7 @@ public class CourseManager {
         return courseList.size();
     }
 
-    public void clearStudents() {
+    public void clearCourse() {
         courseList.clear();
     }
 

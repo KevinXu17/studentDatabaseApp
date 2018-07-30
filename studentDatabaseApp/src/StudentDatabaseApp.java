@@ -18,6 +18,8 @@ public class StudentDatabaseApp {
         preCourseOfcs210.add(cs121);
         Course cs210 = new Course("cs210", 600, preCourseOfcs210,4);
 
+        
+
         courses.addCourse(cs110);
         courses.addCourse(cs121);
         courses.addCourse(cs210);
