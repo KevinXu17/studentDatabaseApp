@@ -47,7 +47,7 @@ public class StudentDatabaseApp {
 //        s.checkInfo();
 
 
-        System.out.println(courses.getNumCourses());
+//        System.out.println(courses.findCourseByName("cs110").getCourseName());
 
     }
 

@@ -70,6 +70,16 @@ public class Student {
         return courses;
     }
 
+    //get how many course credit the student got
+    public int getTotalCredit() {
+        int n = courses.size();
+        int totalCredit = 0;
+        for (int i = 0; i < n; i++) {
+            int credit = courses.get(i).getCredit();
+            totalCredit += credit;
+        }
+        return totalCredit;
+    }
 
     public static int getId() {
         return id;
@@ -101,6 +111,7 @@ public class Student {
     public void getBalance(){
         System.out.println("The balance is: " + getTuitionBalance());
     }
+
 
     //Pay Tuition
     private void payTuition(Course course) throws NoEnoughtMoneyException {

@@ -46,8 +46,14 @@ public class CourseManager {
     }
 
 
+    // return a course by name if it is in instance
     public Course findCourseByName(String name) {
-        
+        int n = getNumCourses();
+        for (int i = 0; i < n; i++) {
+            if (courseList.get(i).getCourseName().equals(name))
+                return courseList.get(i);
+        }
+        return null;
     }
 
 
